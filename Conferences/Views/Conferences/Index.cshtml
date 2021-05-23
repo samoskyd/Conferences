@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Conferences.Conference>
 
 @{
-    ViewData["Title"] = "Конференції за локаціями";
+    ViewData["Title"] = "Conferences";
 }
 
     <h1>Конференції y @ViewBag.LocationCity</h1>
@@ -79,9 +79,9 @@
                 @Html.DisplayFor(modelItem => item.Organizer.FullName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ConferenceId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ConferenceId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ConferenceId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ConferenceId">Редагувати</a> |
+                <a asp-action="Details" asp-route-id="@item.ConferenceId">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConferenceId">Видалити</a>
             </td>
         </tr>
 }
