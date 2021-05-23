@@ -4,39 +4,42 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Конференції</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_vapor_theme.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Конференції</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index">Локації</a>
+                            <a class="nav-link active" asp-area="" asp-controller="Locations" asp-action="Index">Локації</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Organizers" asp-action="Index">Організатори</a>
+                            <a class="nav-link" asp-area="" asp-controller="Organizers" asp-action="Index">Організатори</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Participants" asp-action="Index">Учасники</a>
+                            <a class="nav-link" asp-area="" asp-controller="Participants" asp-action="Index">Учасники</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Works" asp-action="Index">Роботи</a>
+                            <a class="nav-link" asp-area="" asp-controller="Works" asp-action="Index">Роботи</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="WorksAndParticipants" asp-action="Index">Роботи та учасники</a>
+                            <a class="nav-link" asp-area="" asp-controller="WorksAndParticipants" asp-action="Index">Роботи та учасники</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ConferencesAndParticipants" asp-action="Index">Конференції та учасники</a>
+                            <a class="nav-link" asp-area="" asp-controller="ConferencesAndParticipants" asp-action="Index">Конференції та учасники</a>
                         </li>
                     </ul>
+                    <form class="nav-item">
+                        <a class="nav-link" href="https://github.com/samoskyd/Conferences">Посилання на гітхаб</a>
+                    </form>
                 </div>
             </div>
         </nav>
