@@ -4,11 +4,11 @@
     ViewData["Title"] = "Conferences";
 }
 
-    <h1>Конференції y @ViewBag.LocationCity</h1>
+<h1>Конференції y @ViewBag.LocationCity</h1>
 
-    <p>
-        @Html.ActionLink("Додати нову конференцію", "Create", new { loctationId = @ViewBag.LocationId })
-    </p>
+<p>
+    @Html.ActionLink("Додати нову конференцію", "Create", new { loctationId = @ViewBag.LocationId })
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -46,44 +46,45 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Topic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequirementsForWorks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequirementsForParticipants)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Form.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Organizer.FullName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ConferenceId">Редагувати</a> |
-                <a asp-action="Details" asp-route-id="@item.ConferenceId">Деталі</a> |
-                <a asp-action="Delete" asp-route-id="@item.ConferenceId">Видалити</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Topic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequirementsForWorks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequirementsForParticipants)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organizer.FullName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ConferenceId">Редагувати</a> |
+                    <a asp-action="Details" asp-route-id="@item.ConferenceId">Деталі</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ConferenceId">Видалити</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

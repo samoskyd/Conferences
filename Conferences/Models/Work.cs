@@ -29,6 +29,7 @@ namespace Conferences
         [Display(Name = "Конференція")]
         public int ConferenceId { get; set; }
 
+        public virtual Conference Conference { get; set; }
         public virtual ICollection<WorksAndParticipant> WorksAndParticipants { get; set; }
     }
 }
