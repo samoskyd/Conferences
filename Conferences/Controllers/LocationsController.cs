@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Conferences;
+using Microsoft.AspNetCore.Http;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace Conferences.Controllers
 {
@@ -149,5 +152,8 @@ namespace Conferences.Controllers
         {
             return _context.Locations.Any(e => e.LocationId == id);
         }
+
+        
+
     }
 }
