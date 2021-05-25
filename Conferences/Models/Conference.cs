@@ -45,8 +45,11 @@ namespace Conferences
         [Display(Name = "Місце проведення")]
         public int LocationId { get; set; }
 
+        [Display(Name = "Форма проведення")]
         public virtual Form Form { get; set; }
+        [Display(Name = "Місце проведення")]
         public virtual Location Location { get; set; }
+        [Display(Name = "Організатор конференції")]
         public virtual Organizer Organizer { get; set; }
         public virtual ICollection<ConferencesAndParticipant> ConferencesAndParticipants { get; set; }
     }
