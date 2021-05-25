@@ -19,11 +19,10 @@ namespace Conferences.Controllers
         }
 
         // GET: Conferences
-        public async Task<IActionResult> Index(int? id, string? name)
+        public async Task<IActionResult> Index(int? id)
         {
             if (id == null) return RedirectToAction("Locations", "Index");
             ViewBag.LocationId = id;
-            ViewBag.LocationCity = name;
 
             var conferencesByLocation = _context.Conferences.Where(c => c.LocationId == id).Include(c => c.Location).Include(c => c.Form).Include(c => c.Organizer);
             return View(await conferencesByLocation.ToListAsync());
@@ -84,7 +83,7 @@ namespace Conferences.Controllers
             ViewData["OrganizerId"] = new SelectList(_context.Organizers, "OrganizerId", "FullName", conference.OrganizerId);
             //return View();
 
-            return RedirectToAction("Index", "Conferences", new { id = locationId, name = "" });
+            return RedirectToAction("Index", "Conferences", new { id = locationId });
             //_context.Locations.Where(c => c.LocationId == locationId).FirstOrDefault().City
         }
 

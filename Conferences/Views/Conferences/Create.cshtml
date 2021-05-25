@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Додати конференцію @ViewBag.LocationCity</h1>
+<h1>Додати конференцію</h1>
 
 <hr />
 <div class="row">
@@ -67,7 +67,7 @@
 </div>
 
 <div>
-    <a asp-controller="Conferences" asp-action="Index" asp-route-id=@ViewBag.LocationId asp-route-name="">Повернутись</a>
+    <a asp-controller="Conferences" asp-action="Index" asp-route-id="@ViewBag.LocationId">Повернутись</a>
 </div>
 
 @section Scripts {
