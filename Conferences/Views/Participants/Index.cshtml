@@ -50,9 +50,9 @@
                     @Html.DisplayFor(modelItem => item.Institution)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ParticipantId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ParticipantId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ParticipantId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.ParticipantId">Редагувати</a> |
+                    <a asp-action="Details" asp-route-id="@item.ParticipantId">Деталі</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ParticipantId">Видалити</a>
                 </td>
             </tr>
         }
@@ -64,7 +64,7 @@
     <div id="chart1"></div>
 </div>
 @section scripts{
-    <script type "text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);

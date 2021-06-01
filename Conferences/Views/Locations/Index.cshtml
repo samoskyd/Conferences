@@ -48,11 +48,11 @@
 </table>
 
 <div>
-    <h2>Оберіть exel-файл для заватаження</h2>
+    <h2>Оберіть файл</h2>
     @using (Html.BeginForm("Import", "Locations", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))
     {
         <div>
-            Завантажте Excel-файл:
+            Завантажте файл:
             <input type="file" name="fileExcel" id="fileExcel" />
             <div>
                 <input type="submit" value="Завантажити" />
