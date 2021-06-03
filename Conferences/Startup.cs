@@ -54,7 +54,7 @@ namespace Conferences
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Locations}/{action=Index}/{id?}");
+                    pattern: "{controller=Conferences1}/{action=Index}/{id?}");
             });
         }
     }
