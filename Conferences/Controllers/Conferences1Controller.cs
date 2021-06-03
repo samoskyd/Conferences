@@ -224,7 +224,7 @@ namespace Conferences.Controllers
                                         conf.Location = newloc;
                                         _context.Conferences.Add(conf);
                                         
-                                        for (int i = 4; i <= 22; i++)
+                                        for (int i = 4; i <= 30; i++)
                                         {
                                             if (row.Cell(i).Value.ToString().Length > 0)
                                             {
@@ -254,7 +254,7 @@ namespace Conferences.Controllers
                                             }
                                         }
                                     }
-                                    catch (Exception e)
+                                    catch (Exception ex)
                                     { }
                                 }
                             }
@@ -271,10 +271,11 @@ namespace Conferences.Controllers
         {
             using (XLWorkbook workbook = new XLWorkbook(XLEventTracking.Disabled))
             {
-                var locations = _context.Locations.Include("Conferences").ToList();
+                var locations = _context.Locations.Include(l => l.Conferences).ToList();
                 //тут потрібно поставити умову на експорт. яку? не знаю.
                 foreach (var l in locations)
                 {
+                    if (!(l.Conferences.ToList().Count > 0)) continue;
                     var worksheet = workbook.Worksheets.Add(l.City);
 
                     worksheet.Cell("A1").Value = "Назва";
@@ -305,13 +306,13 @@ namespace Conferences.Controllers
                             worksheet.Cell(i + 2, 9).Value = conferences[i].OrganizerId;
                             worksheet.Cell(i + 2, 10).Value = conferences[i].LocationId;
 
-                            var cap = _context.ConferencesAndParticipants.Where(c => c.ConferenceId == conferences[i].ConferenceId).Include("Participants").ToList();
+                            var cap = _context.ConferencesAndParticipants.Where(c => c.ConferenceId == conferences[i].ConferenceId).Include(c => c.Participant).ToList();
                             int j = 0;
                             foreach (var c in cap)
                             {
                                 if (j < 16)
                                 {
-                                    worksheet.Cell(i + 2, j + 10).Value = c.Participant.FullName;
+                                    worksheet.Cell(i + 2, j + 11).Value = c.Participant.FullName;
                                     j++;
                                 }
                             }
