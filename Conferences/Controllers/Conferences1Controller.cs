@@ -184,10 +184,8 @@ namespace Conferences.Controllers
                         await fileExcel.CopyToAsync(stream);
                         using (XLWorkbook workBook = new XLWorkbook(stream, XLEventTracking.Disabled))
                         {
-                            //перегляд усіх листів (в даному випадку категорій)
                             foreach (IXLWorksheet worksheet in workBook.Worksheets)
                             {
-                                //worksheet.Name - назва категорії. Пробуємо знайти в БД, якщо відсутня, то створюємо нову
                                 Location newloc;
                                 var l = (from loc in _context.Locations
                                          where loc.City.Contains(worksheet.Name)
@@ -202,19 +200,19 @@ namespace Conferences.Controllers
                                     newloc.City = worksheet.Name;
                                     newloc.Country = "можливо Україна";
                                     newloc.Capacity = 0;
-                                    //додати в контекст
                                     _context.Locations.Add(newloc);
                                 }
-                                //перегляд усіх рядків                    
-                                foreach (IXLRow row in worksheet.RowsUsed().Skip(1))
+                    
+                                foreach (IXLRow row in worksheet.RowsUsed())
                                 {
-                                    try
-                                    {
+                                    //try
+                                    //{
+                                        int counter = 1;
                                         Conference conf = new Conference();
-                                        DateTime date = new DateTime();
+                                        DateTime date = new DateTime(2020, 1, 1);
                                         conf.Title = row.Cell(1).Value.ToString();
-                                        conf.FormId = (int)row.Cell(2).Value;
-                                        conf.OrganizerId = (int)row.Cell(3).Value;
+                                        conf.FormId = Convert.ToInt32(row.Cell(2).Value);
+                                        conf.OrganizerId = Convert.ToInt32(row.Cell(3).Value);
                                         conf.Aim = "невідомо";
                                         conf.Topic = "невідомо";
                                         conf.RequirementsForWorks = "невідомо";
@@ -241,10 +239,10 @@ namespace Conferences.Controllers
                                                 {
                                                     participant = new Participant();
                                                     participant.FullName = row.Cell(i).Value.ToString();
-                                                    DateTime date1 = new DateTime();
+                                                    DateTime date1 = new DateTime(1980, 1, 1);
                                                     participant.BirthDate = date1;
                                                     participant.Occupation = "невідомо";
-                                                    participant.Occupation = "невідомо";
+                                                    participant.Institution = "невідомо";
                                                     _context.Add(participant);
                                                 }
                                                 ConferencesAndParticipant cap = new ConferencesAndParticipant();
@@ -253,9 +251,9 @@ namespace Conferences.Controllers
                                                 _context.ConferencesAndParticipants.Add(cap);
                                             }
                                         }
-                                    }
-                                    catch (Exception ex)
-                                    { }
+                                    //}
+                                    //catch (Exception ex)
+                                    //{ }
                                 }
                             }
                         }
@@ -272,7 +270,6 @@ namespace Conferences.Controllers
             using (XLWorkbook workbook = new XLWorkbook(XLEventTracking.Disabled))
             {
                 var locations = _context.Locations.Include(l => l.Conferences).ToList();
-                //тут потрібно поставити умову на експорт. яку? не знаю.
                 foreach (var l in locations)
                 {
                     if (!(l.Conferences.ToList().Count > 0)) continue;
