@@ -4,7 +4,7 @@ This project was done as part of Instrumental Enviroments and Technology of Prog
 ## Functionality
 Conferences is a web application using ASP.NET MVC and Entity Framework. It interacts with a database in MS SQL containing data about conferences, locations, participants and other.
 
-## What can I do in this app?
+## __What can I do in this app?__
 ### Add new conferences, locations, participants and more.
 The main purpose of app is to offer a user-friendly interface to work with database.
 ### Add new conferences from excel
